@@ -17,7 +17,7 @@ GO
 
 SELECT id_fecha,DIA,MES,ANIO FROM tbl_fechas
 GO
-
+with cte as (
 SELECT E.id_evento,E.torneo,E.fase,D.nombre_deporte ,L.ciudad,L.region,L.pais,EL.nombre_equipo EQUIPO_LOCAL,EV.nombre_equipo EQUIPO_VISITANTE,E.marcador_local,E.marcador_visitante,E.beneficio_local,E.beneficio_visitante,E.beneficio_empate FROM tbl_eventos E
 LEFT JOIN tbl_deportes D
 ON D.id_deportes=E.deporte
@@ -27,15 +27,16 @@ JOIN tbl_equipos EL
 ON EL.id_equipo=E.equipo_local
 JOIN tbl_equipos EV
 ON EV.id_equipo=E.equipo_visitante
-GO
-
+)
+insert into  
+select * from  DATA_WAREHOUSE_APUESTAS.dbo.DIM_EVENTOS
 
 SELECT A.id_apuesta,A.monto,U.id_usuarios,E.id_evento,A.fecha,
     CASE 
-        WHEN pr.equipo_apostado = E.equipo_ganador THEN 1 
+        WHEN (pr.id_prediccion=1 AND EL.id_equipo=E.equipo_ganador) OR (PR.id_prediccion=2 AND E.equipo_ganador=EV.id_equipo) OR (PR.id_prediccion=3 AND E.marcador_local=E.marcador_visitante) THEN 1 
         ELSE 0 
     END AS ES_GANADA,CASE 
-        WHEN pr.equipo_apostado = EL.id_equipo THEN 1 
+        WHEN pr.id_prediccion=1 THEN 1 
         ELSE 0 
     END AS ES_LOCAL,
 	CASE 
@@ -55,3 +56,7 @@ join tbl_equipos ev
 on ev.id_equipo=e.equipo_visitante
 left join tbl_prediccion pr
 on pr.id_prediccion=a.prediccion
+
+
+
+

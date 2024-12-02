@@ -1,0 +1,2463 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/1/2024 6:07:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PATRICIA"
+  DTS:CreatorName="PATRICIA\bedlam"
+  DTS:DTSID="{F9508E71-3908-43A7-8ABC-AD5F8B08E348}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{675B3C75-A348-461E-8124-52E882DC0C69}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{93116E19-C325-430C-BE6E-365D63459E9E}"
+      DTS:ObjectName="PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PATRICIA\SQLEXPRESS;Initial Catalog=STAGGIN_APUESTAS;Integrated Security=True;TrustServerCertificate=True;Application Name=SSIS-Package-{93116E19-C325-430C-BE6E-365D63459E9E}PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EFCBE0C8-BD4F-4A85-BB30-7A9ABBF3ABFB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="DIM_EQUIPO_DESTIONO"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."DIM_EQUIPOS"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Connections[IDbConnection]"
+                  connectionManagerID="{3EE1DC39-6D21-4E97-93FE-A489714B4406}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PATRICIA_SQLEXPRESS.DATA_WAREHOUSE_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].Columns[id_equipo]"
+                      cachedDataType="i4"
+                      cachedName="id_equipo"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[ID_EQUIPO]"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[id_equipo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].Columns[nombre_equipo]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="nombre_equipo"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[NOMBRE]"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre_equipo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].Columns[ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ciudad"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[CIUDAD_EQUIPO]"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[ciudad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].Columns[pais]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="pais"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[PAIS_EQUIPO]"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[pais]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[REGION_EQUIPO]"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[region]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[ID_EQUIPO]"
+                      dataType="i4"
+                      name="ID_EQUIPO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[NOMBRE]"
+                      dataType="wstr"
+                      length="50"
+                      name="NOMBRE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[CIUDAD_EQUIPO]"
+                      dataType="wstr"
+                      length="50"
+                      name="CIUDAD_EQUIPO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[PAIS_EQUIPO]"
+                      dataType="wstr"
+                      length="50"
+                      name="PAIS_EQUIPO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input].ExternalColumns[REGION_EQUIPO]"
+                      dataType="wstr"
+                      length="50"
+                      name="REGION_EQUIPO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="DIM_EQUIPO_ORIGEN"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select e.id_equipo,e.nombre_equipo,l.ciudad,l.pais,l.region,d.nombre_deporte from dbo.tbl_equipos e 
+left join dbo.tbl_locacion l
+on e.lugar_origen=l.id_localizacion
+left join dbo.tbl_deportes d
+on e.deporte=d.id_deportes</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  connectionManagerRefId="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[id_equipo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_equipo]"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[id_equipo]"
+                      name="id_equipo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre_equipo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[nombre_equipo]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre_equipo]"
+                      name="nombre_equipo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[ciudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ciudad]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[ciudad]"
+                      name="ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[pais]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[pais]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[pais]"
+                      name="pais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[region]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre_deporte]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[nombre_deporte]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre_deporte]"
+                      name="nombre_deporte"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_equipo]"
+                      dataType="i4"
+                      name="id_equipo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[nombre_equipo]"
+                      dataType="wstr"
+                      length="100"
+                      name="nombre_equipo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ciudad]"
+                      dataType="wstr"
+                      length="100"
+                      name="ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[pais]"
+                      dataType="wstr"
+                      length="100"
+                      name="pais" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="100"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[nombre_deporte]"
+                      dataType="wstr"
+                      length="100"
+                      name="nombre_deporte" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_equipo]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_equipo]"
+                      name="id_equipo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[nombre_equipo]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[nombre_equipo]"
+                      name="nombre_equipo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ciudad]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ciudad]"
+                      name="ciudad" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[pais]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[pais]"
+                      name="pais" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[region]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[nombre_deporte]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[nombre_deporte]"
+                      name="nombre_deporte" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\DIM_EVENTO_DESTINO"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="DIM_EVENTO_DESTINO"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."DIM_EVENTOS"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Connections[IDbConnection]"
+                  connectionManagerID="{3EE1DC39-6D21-4E97-93FE-A489714B4406}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PATRICIA_SQLEXPRESS.DATA_WAREHOUSE_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[id_evento]"
+                      cachedDataType="i4"
+                      cachedName="id_evento"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[ID_EVENTO]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[id_evento]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[torneo]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="torneo"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[TORNEO]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[torneo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[fase]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fase"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[FASE]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[fase]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[EQUIPO_LOCAL]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="EQUIPO_LOCAL"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[EQUIPO_LOCAL]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[EQUIPO_LOCAL]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[EQUIPO_VISITANTE]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="EQUIPO_VISITANTE"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[EQUIPO_VISITANTE]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[EQUIPO_VISITANTE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[marcador_local]"
+                      cachedDataType="i4"
+                      cachedName="marcador_local"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[MARCADOR_LOCAL]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[marcador_local]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[marcador_visitante]"
+                      cachedDataType="i4"
+                      cachedName="marcador_visitante"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[MARCADOR_VISITANTE]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[marcador_visitante]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[beneficio_local]"
+                      cachedDataType="r4"
+                      cachedName="beneficio_local"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[BENEFICIO_LOCAL]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[beneficio_local]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[beneficio_visitante]"
+                      cachedDataType="r4"
+                      cachedName="beneficio_visitante"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[BENEFICIO_VISITANTE]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[beneficio_visitante]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[beneficio_empate]"
+                      cachedDataType="r4"
+                      cachedName="beneficio_empate"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[BENEFICIO_EMPATE]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[beneficio_empate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[nombre_deporte]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="nombre_deporte"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[DEPORTE]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre_deporte]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ciudad"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[CIUDAD_EVENTO]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[ciudad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[REGION_EVENTO]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[region]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].Columns[pais]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="pais"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[PAIS_EVENTO]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[ID_EVENTO]"
+                      dataType="i4"
+                      name="ID_EVENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[TORNEO]"
+                      dataType="wstr"
+                      length="50"
+                      name="TORNEO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[FASE]"
+                      dataType="wstr"
+                      length="50"
+                      name="FASE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[DEPORTE]"
+                      dataType="wstr"
+                      length="50"
+                      name="DEPORTE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[CIUDAD_EVENTO]"
+                      dataType="wstr"
+                      length="50"
+                      name="CIUDAD_EVENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[REGION_EVENTO]"
+                      dataType="wstr"
+                      length="50"
+                      name="REGION_EVENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[PAIS_EVENTO]"
+                      dataType="wstr"
+                      length="50"
+                      name="PAIS_EVENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[EQUIPO_LOCAL]"
+                      dataType="i4"
+                      name="EQUIPO_LOCAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[EQUIPO_VISITANTE]"
+                      dataType="i4"
+                      name="EQUIPO_VISITANTE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[MARCADOR_LOCAL]"
+                      dataType="i4"
+                      name="MARCADOR_LOCAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[MARCADOR_VISITANTE]"
+                      dataType="i4"
+                      name="MARCADOR_VISITANTE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[BENEFICIO_LOCAL]"
+                      dataType="r8"
+                      name="BENEFICIO_LOCAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[BENEFICIO_VISITANTE]"
+                      dataType="r8"
+                      name="BENEFICIO_VISITANTE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[BENEFICIO_EMPATE]"
+                      dataType="r8"
+                      name="BENEFICIO_EMPATE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="DIM_EVENTO_ORIGEN"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT E.id_evento,E.torneo,E.fase,D.nombre_deporte ,L.ciudad,L.region,L.pais,EL.nombre_equipo EQUIPO_LOCAL,EV.nombre_equipo EQUIPO_VISITANTE,E.marcador_local,E.marcador_visitante,E.beneficio_local,E.beneficio_visitante,E.beneficio_empate FROM tbl_eventos E
+LEFT JOIN tbl_deportes D
+ON D.id_deportes=E.deporte
+LEFT JOIN tbl_locacion L
+ON L.id_localizacion=E.lugar
+JOIN tbl_equipos EL
+ON EL.id_equipo=E.equipo_local
+JOIN tbl_equipos EV
+ON EV.id_equipo=E.equipo_visitante</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  connectionManagerRefId="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[id_evento]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_evento]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[id_evento]"
+                      name="id_evento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[torneo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[torneo]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[torneo]"
+                      name="torneo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[fase]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[fase]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[fase]"
+                      name="fase"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre_deporte]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[nombre_deporte]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre_deporte]"
+                      name="nombre_deporte"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[ciudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ciudad]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[ciudad]"
+                      name="ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[region]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[pais]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[pais]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[pais]"
+                      name="pais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[EQUIPO_LOCAL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[EQUIPO_LOCAL]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[EQUIPO_LOCAL]"
+                      name="EQUIPO_LOCAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[EQUIPO_VISITANTE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[EQUIPO_VISITANTE]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[EQUIPO_VISITANTE]"
+                      name="EQUIPO_VISITANTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[marcador_local]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[marcador_local]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[marcador_local]"
+                      name="marcador_local"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[marcador_visitante]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[marcador_visitante]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[marcador_visitante]"
+                      name="marcador_visitante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[beneficio_local]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[beneficio_local]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[beneficio_local]"
+                      name="beneficio_local"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[beneficio_visitante]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[beneficio_visitante]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[beneficio_visitante]"
+                      name="beneficio_visitante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[beneficio_empate]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[beneficio_empate]"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].Columns[beneficio_empate]"
+                      name="beneficio_empate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_evento]"
+                      dataType="i4"
+                      name="id_evento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[torneo]"
+                      dataType="wstr"
+                      length="100"
+                      name="torneo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[fase]"
+                      dataType="wstr"
+                      length="50"
+                      name="fase" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[nombre_deporte]"
+                      dataType="wstr"
+                      length="100"
+                      name="nombre_deporte" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ciudad]"
+                      dataType="wstr"
+                      length="100"
+                      name="ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="100"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[pais]"
+                      dataType="wstr"
+                      length="100"
+                      name="pais" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[EQUIPO_LOCAL]"
+                      dataType="wstr"
+                      length="100"
+                      name="EQUIPO_LOCAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[EQUIPO_VISITANTE]"
+                      dataType="wstr"
+                      length="100"
+                      name="EQUIPO_VISITANTE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[marcador_local]"
+                      dataType="i4"
+                      name="marcador_local" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[marcador_visitante]"
+                      dataType="i4"
+                      name="marcador_visitante" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[beneficio_local]"
+                      dataType="r4"
+                      name="beneficio_local" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[beneficio_visitante]"
+                      dataType="r4"
+                      name="beneficio_visitante" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[beneficio_empate]"
+                      dataType="r4"
+                      name="beneficio_empate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_evento]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_evento]"
+                      name="id_evento" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[torneo]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[torneo]"
+                      name="torneo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[fase]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[fase]"
+                      name="fase" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[nombre_deporte]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[nombre_deporte]"
+                      name="nombre_deporte" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ciudad]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ciudad]"
+                      name="ciudad" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[region]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[pais]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[pais]"
+                      name="pais" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[EQUIPO_LOCAL]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[EQUIPO_LOCAL]"
+                      name="EQUIPO_LOCAL" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[EQUIPO_VISITANTE]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[EQUIPO_VISITANTE]"
+                      name="EQUIPO_VISITANTE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[marcador_local]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[marcador_local]"
+                      name="marcador_local" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[marcador_visitante]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[marcador_visitante]"
+                      name="marcador_visitante" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[beneficio_local]"
+                      dataType="r4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[beneficio_local]"
+                      name="beneficio_local" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[beneficio_visitante]"
+                      dataType="r4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[beneficio_visitante]"
+                      name="beneficio_visitante" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[beneficio_empate]"
+                      dataType="r4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[beneficio_empate]"
+                      name="beneficio_empate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\DIM_FECHA_DESTINO"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="DIM_FECHA_DESTINO"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."DIM_FECHA"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Connections[IDbConnection]"
+                  connectionManagerID="{3EE1DC39-6D21-4E97-93FE-A489714B4406}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PATRICIA_SQLEXPRESS.DATA_WAREHOUSE_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].Columns[id_fecha]"
+                      cachedDataType="i4"
+                      cachedName="id_fecha"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[ID_FECHA]"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[id_fecha]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].Columns[DIA]"
+                      cachedDataType="i4"
+                      cachedName="DIA"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[DIA]"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[DIA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].Columns[MES]"
+                      cachedDataType="i4"
+                      cachedName="MES"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[MES]"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[MES]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].Columns[ANIO]"
+                      cachedDataType="i4"
+                      cachedName="ANIO"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[ANIO]"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[ANIO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[ID_FECHA]"
+                      dataType="i4"
+                      name="ID_FECHA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[DIA]"
+                      dataType="i4"
+                      name="DIA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[MES]"
+                      dataType="i4"
+                      name="MES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input].ExternalColumns[ANIO]"
+                      dataType="i4"
+                      name="ANIO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_DESTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_DESTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_DESTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\DIM_FECHA_ORIGEN"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="DIM_FECHA_ORIGEN"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT id_fecha,DIA,MES,ANIO FROM tbl_fechas
+GO</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  connectionManagerRefId="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[id_fecha]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_fecha]"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[id_fecha]"
+                      name="id_fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[DIA]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[DIA]"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[DIA]"
+                      name="DIA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[MES]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[MES]"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[MES]"
+                      name="MES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[ANIO]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ANIO]"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].Columns[ANIO]"
+                      name="ANIO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_fecha]"
+                      dataType="i4"
+                      name="id_fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[DIA]"
+                      dataType="i4"
+                      name="DIA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[MES]"
+                      dataType="i4"
+                      name="MES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ANIO]"
+                      dataType="i4"
+                      name="ANIO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_fecha]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_fecha]"
+                      name="id_fecha" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[DIA]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[DIA]"
+                      name="DIA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[MES]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[MES]"
+                      name="MES" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ANIO]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ANIO]"
+                      name="ANIO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\DIM_USUARIO_DSTINO"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="DIM_USUARIO_DSTINO"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."DIM_USUARIOS"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Connections[IDbConnection]"
+                  connectionManagerID="{3EE1DC39-6D21-4E97-93FE-A489714B4406}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PATRICIA_SQLEXPRESS.DATA_WAREHOUSE_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].Columns[edad]"
+                      cachedDataType="i4"
+                      cachedName="edad"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[EDAD]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[edad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].Columns[genero]"
+                      cachedDataType="i4"
+                      cachedName="genero"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[GENERO]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[genero]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].Columns[saldo]"
+                      cachedDataType="r4"
+                      cachedName="saldo"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[SALDO]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[saldo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].Columns[id_usuarios]"
+                      cachedDataType="i4"
+                      cachedName="id_usuarios"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[ID_USARIO]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[id_usuarios]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[NOMBRE_USUARIO]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].Columns[pais]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="pais"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[PAIS_USUARIO]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[pais]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].Columns[ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ciudad"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[CIUDAD_USUARIO]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[ciudad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[REGION_USUARIO]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[region]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[ID_USARIO]"
+                      dataType="i4"
+                      name="ID_USARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[NOMBRE_USUARIO]"
+                      dataType="wstr"
+                      length="100"
+                      name="NOMBRE_USUARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[EDAD]"
+                      dataType="i4"
+                      name="EDAD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[GENERO]"
+                      dataType="wstr"
+                      length="50"
+                      name="GENERO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[PAIS_USUARIO]"
+                      dataType="wstr"
+                      length="150"
+                      name="PAIS_USUARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[SALDO]"
+                      dataType="r8"
+                      name="SALDO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[CIUDAD_USUARIO]"
+                      dataType="wstr"
+                      length="50"
+                      name="CIUDAD_USUARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input].ExternalColumns[REGION_USUARIO]"
+                      dataType="wstr"
+                      length="50"
+                      name="REGION_USUARIO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="DIM_USUARIO_ORIGEN"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT U.id_usuarios,P.nombre,P.edad,P.genero,L.pais,U.saldo,L.ciudad,L.region FROM tbl_usuarios U
+LEFT JOIN tbl_personas P
+ON U.id_persona=P.id_persona
+LEFT JOIN tbl_locacion L
+ON P.lugar=L.id_localizacion</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  connectionManagerRefId="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[id_usuarios]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_usuarios]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[id_usuarios]"
+                      name="id_usuarios"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[edad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[edad]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[edad]"
+                      name="edad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[genero]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[genero]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[genero]"
+                      name="genero"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[pais]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[pais]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[pais]"
+                      name="pais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[saldo]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[saldo]"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[saldo]"
+                      name="saldo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[ciudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ciudad]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[ciudad]"
+                      name="ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[region]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_usuarios]"
+                      dataType="i4"
+                      name="id_usuarios" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="50"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[edad]"
+                      dataType="i4"
+                      name="edad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[genero]"
+                      dataType="i4"
+                      name="genero" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[pais]"
+                      dataType="wstr"
+                      length="100"
+                      name="pais" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[saldo]"
+                      dataType="r4"
+                      name="saldo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ciudad]"
+                      dataType="wstr"
+                      length="100"
+                      name="ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="100"
+                      name="region" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_usuarios]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_usuarios]"
+                      name="id_usuarios" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[nombre]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[edad]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[edad]"
+                      name="edad" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[genero]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[genero]"
+                      name="genero" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[pais]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[pais]"
+                      name="pais" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[saldo]"
+                      dataType="r4"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[saldo]"
+                      name="saldo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ciudad]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ciudad]"
+                      name="ciudad" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[region]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\H_APUESTAS_DESTION"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="H_APUESTAS_DESTION"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."HECHOS_APUESTAS"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\H_APUESTAS_DESTION.Connections[IDbConnection]"
+                  connectionManagerID="{3EE1DC39-6D21-4E97-93FE-A489714B4406}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PATRICIA_SQLEXPRESS.DATA_WAREHOUSE_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[id_apuesta]"
+                      cachedDataType="i4"
+                      cachedName="id_apuesta"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_APUESTA]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[id_apuesta]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[monto]"
+                      cachedDataType="r4"
+                      cachedName="monto"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[MONTO]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[monto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[id_evento]"
+                      cachedDataType="i4"
+                      cachedName="id_evento"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_EVENTO]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[id_evento]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[ES_GANADA]"
+                      cachedDataType="i4"
+                      cachedName="ES_GANADA"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ES_GANADA]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ES_GANADA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[ES_LOCAL]"
+                      cachedDataType="i4"
+                      cachedName="ES_LOCAL"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ES_LOCAL]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ES_LOCAL]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[es_EMPATE]"
+                      cachedDataType="i4"
+                      cachedName="es_EMPATE"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ES_EMPATE]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[es_EMPATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[ID_LOCAL]"
+                      cachedDataType="i4"
+                      cachedName="ID_LOCAL"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_LOCAL]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ID_LOCAL]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[ID_VISITANTE]"
+                      cachedDataType="i4"
+                      cachedName="ID_VISITANTE"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_VISITANTE]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ID_VISITANTE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[id_usuarios]"
+                      cachedDataType="i4"
+                      cachedName="id_usuarios"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_USUARIO]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[id_usuarios]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].Columns[fecha]"
+                      cachedDataType="i4"
+                      cachedName="fecha"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[FECHA_APUESTA]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[fecha]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_APUESTA]"
+                      dataType="i4"
+                      name="ID_APUESTA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[MONTO]"
+                      dataType="r8"
+                      name="MONTO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_USUARIO]"
+                      dataType="i4"
+                      name="ID_USUARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_EVENTO]"
+                      dataType="i4"
+                      name="ID_EVENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[FECHA_APUESTA]"
+                      dataType="i4"
+                      name="FECHA_APUESTA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ES_GANADA]"
+                      dataType="i4"
+                      name="ES_GANADA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ES_LOCAL]"
+                      dataType="i4"
+                      name="ES_LOCAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ES_EMPATE]"
+                      dataType="i4"
+                      name="ES_EMPATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_LOCAL]"
+                      dataType="i4"
+                      name="ID_LOCAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input].ExternalColumns[ID_VISITANTE]"
+                      dataType="i4"
+                      name="ID_VISITANTE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\H_APUESTAS_DESTION.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_DESTION.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_DESTION.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_DESTION.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\H_APUESTAS_ORIGEN"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="H_APUESTAS_ORIGEN"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT A.id_apuesta,A.monto,U.id_usuarios,E.id_evento,A.fecha,
+    CASE 
+        WHEN pr.equipo_apostado = E.equipo_ganador THEN 1 
+        ELSE 0 
+    END AS ES_GANADA,CASE 
+        WHEN pr.equipo_apostado = EL.id_equipo THEN 1 
+        ELSE 0 
+    END AS ES_LOCAL,
+	CASE 
+        WHEN E.marcador_local = E.marcador_visitante THEN 1 
+        ELSE 0 
+    END AS es_EMPATE,el.id_equipo ID_LOCAL,ev.id_equipo ID_VISITANTE
+FROM tbl_apuestas A
+LEFT JOIN tbl_usuarios U
+ON U.id_usuarios=A.usuario
+LEFT JOIN tbl_eventos E
+ON E.id_evento=A.evento
+LEFT JOIN tbl_fechas F
+ON F.id_fecha=A.fecha
+join tbl_equipos el
+on e.equipo_local=el.id_equipo
+join tbl_equipos ev
+on ev.id_equipo=e.equipo_visitante
+left join tbl_prediccion pr
+on pr.id_prediccion=a.prediccion</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  connectionManagerRefId="Package.ConnectionManagers[PATRICIA\SQLEXPRESS.STAGGIN_APUESTAS]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[id_apuesta]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_apuesta]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[id_apuesta]"
+                      name="id_apuesta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[monto]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[monto]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[monto]"
+                      name="monto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[id_usuarios]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_usuarios]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[id_usuarios]"
+                      name="id_usuarios"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[id_evento]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_evento]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[id_evento]"
+                      name="id_evento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[fecha]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[fecha]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[fecha]"
+                      name="fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ES_GANADA]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ES_GANADA]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ES_GANADA]"
+                      name="ES_GANADA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ES_LOCAL]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ES_LOCAL]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ES_LOCAL]"
+                      name="ES_LOCAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[es_EMPATE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[es_EMPATE]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[es_EMPATE]"
+                      name="es_EMPATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ID_LOCAL]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ID_LOCAL]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ID_LOCAL]"
+                      name="ID_LOCAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ID_VISITANTE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ID_VISITANTE]"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].Columns[ID_VISITANTE]"
+                      name="ID_VISITANTE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_apuesta]"
+                      dataType="i4"
+                      name="id_apuesta" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[monto]"
+                      dataType="r4"
+                      name="monto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_usuarios]"
+                      dataType="i4"
+                      name="id_usuarios" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[id_evento]"
+                      dataType="i4"
+                      name="id_evento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[fecha]"
+                      dataType="i4"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ES_GANADA]"
+                      dataType="i4"
+                      name="ES_GANADA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ES_LOCAL]"
+                      dataType="i4"
+                      name="ES_LOCAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[es_EMPATE]"
+                      dataType="i4"
+                      name="es_EMPATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ID_LOCAL]"
+                      dataType="i4"
+                      name="ID_LOCAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output].ExternalColumns[ID_VISITANTE]"
+                      dataType="i4"
+                      name="ID_VISITANTE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_apuesta]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_apuesta]"
+                      name="id_apuesta" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[monto]"
+                      dataType="r4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[monto]"
+                      name="monto" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_usuarios]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_usuarios]"
+                      name="id_usuarios" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_evento]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[id_evento]"
+                      name="id_evento" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[fecha]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[fecha]"
+                      name="fecha" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ES_GANADA]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ES_GANADA]"
+                      name="ES_GANADA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ES_LOCAL]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ES_LOCAL]"
+                      name="ES_LOCAL" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[es_EMPATE]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[es_EMPATE]"
+                      name="es_EMPATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ID_LOCAL]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ID_LOCAL]"
+                      name="ID_LOCAL" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ID_VISITANTE]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ID_VISITANTE]"
+                      name="ID_VISITANTE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[ADO NET Source Output]"
+              endId="Package\Data Flow Task\DIM_EQUIPO_DESTIONO.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task\DIM_EQUIPO_ORIGEN.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[ADO NET Source Output1]"
+              endId="Package\Data Flow Task\DIM_USUARIO_DSTINO.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task\DIM_USUARIO_ORIGEN.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[ADO NET Source Output2]"
+              endId="Package\Data Flow Task\DIM_FECHA_DESTINO.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task\DIM_FECHA_ORIGEN.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[ADO NET Source Output3]"
+              endId="Package\Data Flow Task\DIM_EVENTO_DESTINO.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task\DIM_EVENTO_ORIGEN.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[ADO NET Source Output4]"
+              endId="Package\Data Flow Task\H_APUESTAS_DESTION.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task\H_APUESTAS_ORIGEN.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="155.833324818976,120.466665828957" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\Data Flow Task\H_APUESTAS_DESTION"
+          TopLeft="95.4999995529652,534.249993015081" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Data Flow Task\DIM_USUARIO_ORIGEN"
+          TopLeft="423.999993681908,87.4285701257842" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Data Flow Task\DIM_EVENTO_DESTINO"
+          TopLeft="1035.4999846518,271.749996032566" />
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\Data Flow Task\H_APUESTAS_ORIGEN"
+          TopLeft="90.4999991804361,386.749994765967" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Data Flow Task\DIM_FECHA_DESTINO"
+          TopLeft="727.499990135431,274.928568307843" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Data Flow Task\DIM_EVENTO_ORIGEN"
+          TopLeft="1048.35712731736,78.7142846233079" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Data Flow Task\DIM_EQUIPO_ORIGEN"
+          TopLeft="85.4999988079071,88.9285701853889" />
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\Data Flow Task\DIM_FECHA_ORIGEN"
+          TopLeft="760.499989196658,83.9285707069295" />
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\Data Flow Task\DIM_USUARIO_DSTINO"
+          TopLeft="395.99999409914,263.42856750318" />
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Data Flow Task\DIM_EQUIPO_DESTIONO"
+          TopLeft="60.7499990947545,272.428567369069" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output4]"
+          TopLeft="191.199999366701,428.349994765967">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,105.899998249113"
+              Start="0,0"
+              End="0,98.3999982491135">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,98.3999982491135" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output3]"
+          TopLeft="1144.75712731736,120.314284623308">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.4571426655566,151.435711409258"
+              Start="0,0"
+              End="-10.4571426655566,143.935711409258">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.717855704629" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,71.717855704629"
+                    Point2="0,75.717855704629"
+                    Point3="-4,75.717855704629" />
+                  <mssgle:LineSegment
+                    End="-6.4571426655566,75.717855704629" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.4571426655566,75.717855704629"
+                    Point2="-10.4571426655566,75.717855704629"
+                    Point3="-10.4571426655566,79.717855704629" />
+                  <mssgle:LineSegment
+                    End="-10.4571426655566,143.935711409258" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output2]"
+          TopLeft="853.299989196658,125.528570706929">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.5999990612268,149.399997600913"
+              Start="0,0"
+              End="-30.5999990612268,141.899997600913">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.6999988004565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,70.6999988004565"
+                    Point2="0,74.6999988004565"
+                    Point3="-4,74.6999988004565" />
+                  <mssgle:LineSegment
+                    End="-26.5999990612268,74.6999988004565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.5999990612268,74.6999988004565"
+                    Point2="-30.5999990612268,74.6999988004565"
+                    Point3="-30.5999990612268,78.6999988004565" />
+                  <mssgle:LineSegment
+                    End="-30.5999990612268,141.899997600913" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output1]"
+          TopLeft="522.799993681908,129.028570125784">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.7999995827674,134.399997377396"
+              Start="0,0"
+              End="-28.7999995827674,126.899997377396">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.1999986886978" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.1999986886978"
+                    Point2="0,67.1999986886978"
+                    Point3="-4,67.1999986886978" />
+                  <mssgle:LineSegment
+                    End="-24.7999995827674,67.1999986886978" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.7999995827674,67.1999986886978"
+                    Point2="-28.7999995827674,67.1999986886978"
+                    Point3="-28.7999995827674,71.1999986886978" />
+                  <mssgle:LineSegment
+                    End="-28.7999995827674,126.899997377396" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output]"
+          TopLeft="180.699998807907,130.528570185389">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.9499997131526,141.89999718368"
+              Start="0,0"
+              End="-17.9499997131526,134.39999718368">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.9499985918402" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.9499985918402"
+                    Point2="0,70.9499985918402"
+                    Point3="-4,70.9499985918402" />
+                  <mssgle:LineSegment
+                    End="-13.9499997131526,70.9499985918402" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.9499997131526,70.9499985918402"
+                    Point2="-17.9499997131526,70.9499985918402"
+                    Point3="-17.9499997131526,74.9499985918402" />
+                  <mssgle:LineSegment
+                    End="-17.9499997131526,134.39999718368" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\H_APUESTAS_DESTION">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DIM_USUARIO_ORIGEN">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DIM_EVENTO_DESTINO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\H_APUESTAS_ORIGEN">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DIM_FECHA_DESTINO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DIM_EVENTO_ORIGEN">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DIM_EQUIPO_ORIGEN">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DIM_FECHA_ORIGEN">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DIM_USUARIO_DSTINO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DIM_EQUIPO_DESTIONO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
